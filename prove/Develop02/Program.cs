@@ -16,7 +16,9 @@ class Program
             int selection = 0;
             List<string> _entries = new List<string>();
             
-            static void SelectionList(string name){Console.WriteLine($"\nHello {name}, Welcome to your Personalized Journal!");
+            static void SelectionList(string name){
+            Console.WriteLine("--------------------------------------------------------");
+            Console.WriteLine($"\nHello {name}, Welcome to your Personalized Journal!");
             Console.WriteLine($"Type in the number, to do the corresponding action!\n");
             Console.WriteLine($"1 - Write\n2 - Display\n3 - Save\n4 - Load\n5 - Quit\n");
             Console.Write($"What would you like to do? ");
@@ -37,7 +39,7 @@ class Program
                 
 
                 Write write1 = new Write();
-                Console.WriteLine($"Begin typing your entry below:\n");
+                Console.WriteLine($"\nBegin typing your entry below:\n");
                 Console.WriteLine($"Prompt of the Day!");
                 Console.WriteLine($"{randomString}\n");
                 write1._entry = ($"{currentDateTime} {Console.ReadLine()}");
