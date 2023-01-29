@@ -2,6 +2,7 @@ using System;
 
 public class Write{
     
+
     public List<string> _entries = new List<string>();
     public string _entry = "";
 

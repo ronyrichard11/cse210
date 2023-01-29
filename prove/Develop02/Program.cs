@@ -33,13 +33,14 @@ class Program
                 Random rnd = new Random();
                 int index = rnd.Next(myList.Count);
                 string randomString = myList[index];
+                DateTime currentDateTime = DateTime.Now;
                 
 
                 Write write1 = new Write();
                 Console.WriteLine($"Begin typing your entry below:\n");
                 Console.WriteLine($"Prompt of the Day!");
                 Console.WriteLine($"{randomString}\n");
-                write1._entry = Console.ReadLine();
+                write1._entry = ($"{currentDateTime} {Console.ReadLine()}");
                 _entries.Add(write1._entry);
                 
                 Console.WriteLine("\nEntry Saved!");
@@ -62,6 +63,7 @@ class Program
             while (selection == 3){
                 Console.WriteLine($"What do you want to name your file?");
                 string filename = Console.ReadLine() + ".txt";
+    
                 
                 using (StreamWriter outputFile = new StreamWriter(filename)){
                     foreach (string entry in _entries){
