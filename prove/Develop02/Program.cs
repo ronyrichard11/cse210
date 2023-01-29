@@ -28,10 +28,17 @@ class Program
             
 
             while (selection == 1){
-                Write write1 = new Write();
-                Console.WriteLine($"Prompt of the Day:\n ");
-                Console.WriteLine($"Begin typing your entry below:\n");
+
+                List<string> myList = new List<string>() {"Who was the most interesting person I interacted with today?", "What was the best part of my day?", "How did I see the hand of the Lord in my life today?", "What was the strongest emotion I felt today?", "If I had one thing I could do over today, what would it be?"};
+                Random rnd = new Random();
+                int index = rnd.Next(myList.Count);
+                string randomString = myList[index];
                 
+
+                Write write1 = new Write();
+                Console.WriteLine($"Begin typing your entry below:\n");
+                Console.WriteLine($"Prompt of the Day!");
+                Console.WriteLine($"{randomString}\n");
                 write1._entry = Console.ReadLine();
                 _entries.Add(write1._entry);
                 
@@ -52,7 +59,39 @@ class Program
                 selection = int.Parse(Console.ReadLine());
             }
 
+            while (selection == 3){
+                Console.WriteLine($"What do you want to name your file?");
+                string filename = Console.ReadLine() + ".txt";
+                
+                using (StreamWriter outputFile = new StreamWriter(filename)){
+                    foreach (string entry in _entries){
+                        outputFile.WriteLine(entry);
+                }
+                }
+                selection = 0;
+                SelectionList(name);
+                selection = int.Parse(Console.ReadLine());
+
+            }
+
+            while (selection == 4){
+                Console.WriteLine("What is the File Name?\n");
+                string filePath = Console.ReadLine() + ".txt";
+
+                using (StreamReader sr = new StreamReader(filePath)){
+                    while (!sr.EndOfStream){
+                        string line = sr.ReadLine();
+                        Console.WriteLine(line);
+                    }
+                }
+                
+                selection = 0;
+                SelectionList(name);
+                selection = int.Parse(Console.ReadLine());
+            }
+
             while (selection == 5){
+                Console.WriteLine($"Thank you! Goodbye {name}!");
                 Environment.Exit(0);
             }
 
