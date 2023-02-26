@@ -86,7 +86,7 @@ class BreathingActivity : Activity
 {
     public override void DoActivity()
     {
-        Console.WriteLine("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
+        Console.WriteLine("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.\n");
         for (int i = 1; i <= _duration; i += 2)
         {
             Console.WriteLine("Breathe in...");
@@ -129,7 +129,7 @@ class ReflectionActivity: Activity
 
         Console.WriteLine(randomPrompt);
 
-        Console.WriteLine("Answer the following questions:");
+        Console.WriteLine("\nAnswer the following questions:");
         foreach (string question in _questions)
         {
             Console.Write("- " + question + " ");
@@ -151,7 +151,7 @@ class ListingActivity : Activity
 
     public override void DoActivity()
     {
-        Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+        Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.\n");
         
         // select a random prompt
         Random rnd = new Random();
