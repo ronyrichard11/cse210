@@ -51,20 +51,20 @@ class Program
 
 abstract class Activity
 {
-    protected int duration;
+    protected int _duration;
 
     public void Start()
     {
         Console.WriteLine("Starting activity...");
         Console.Write("Enter duration in seconds: ");
-        duration = int.Parse(Console.ReadLine());
+        _duration = int.Parse(Console.ReadLine());
         Console.WriteLine("Get ready to begin in 3 seconds...");
         Pause(3);
     }
 
     public void End()
     {
-        Console.WriteLine("Good job! You completed the activity within {0} seconds.", duration);
+        Console.WriteLine("Good job! You completed the activity within {0} seconds.", _duration);
         Pause(3);
     }
 
@@ -87,7 +87,7 @@ class BreathingActivity : Activity
     public override void DoActivity()
     {
         Console.WriteLine("This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
-        for (int i = 1; i <= duration; i += 2)
+        for (int i = 1; i <= _duration; i += 2)
         {
             Console.WriteLine("Breathe in...");
             Pause(2);
@@ -99,7 +99,7 @@ class BreathingActivity : Activity
 
 class ReflectionActivity: Activity
 {
-    private List<string> prompts = new List<string>()
+    private List<string> _prompts = new List<string>()
     {
         "Think of a time when you stood up for someone else.",
         "Think of a time when you did something really difficult.",
@@ -107,7 +107,7 @@ class ReflectionActivity: Activity
         "Think of a time when you did something truly selfless."
     };
 
-    private List<string> questions = new List<string>()
+    private List<string> _questions = new List<string>()
     {
         "Why was this experience meaningful to you?",
         "Have you ever done anything like this before?",
@@ -124,13 +124,13 @@ class ReflectionActivity: Activity
     {
         Console.WriteLine("Reflect on the following prompt:");
         Random rand = new Random();
-        int index = rand.Next(prompts.Count);
-        string randomPrompt = prompts[index];
+        int index = rand.Next(_prompts.Count);
+        string randomPrompt = _prompts[index];
 
         Console.WriteLine(randomPrompt);
 
         Console.WriteLine("Answer the following questions:");
-        foreach (string question in questions)
+        foreach (string question in _questions)
         {
             Console.Write("- " + question + " ");
             Console.ReadLine();
@@ -140,7 +140,7 @@ class ReflectionActivity: Activity
 
 class ListingActivity : Activity
 {
-    private List<string> prompts = new List<string>()
+    private List<string> _prompts = new List<string>()
     {
         "Who are people that you appreciate?",
         "What are personal strengths of yours?",
@@ -155,10 +155,10 @@ class ListingActivity : Activity
         
         // select a random prompt
         Random rnd = new Random();
-        int index = rnd.Next(prompts.Count);
-        string prompt = prompts[index];
+        int _index = rnd.Next(_prompts.Count);
+        string _prompt = _prompts[_index];
 
-        Console.WriteLine(prompt);
+        Console.WriteLine(_prompt);
         Pause(3);
 
         Console.WriteLine("List as many items as you can until the timer runs out.");
@@ -166,17 +166,17 @@ class ListingActivity : Activity
         Console.WriteLine("Your time starts now!");
         
         // initialize a list to hold the user's entries
-        List<string> entries = new List<string>();
+        List<string> _entries = new List<string>();
         
         // loop until the duration runs out
-        DateTime endTime = DateTime.Now.AddSeconds(duration);
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
         int count = 0;
         while (DateTime.Now < endTime)
         {
             string entry = Console.ReadLine();
             if (entry != "")
             {
-                entries.Add(entry);
+                _entries.Add(entry);
                 count++;
             }
         }
